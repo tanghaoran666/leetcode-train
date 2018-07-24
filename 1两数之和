@@ -1,0 +1,31 @@
+# leetcode-train
+class Solution:
+    def twoSum(self, nums, target):            
+        m=0
+        while m<len(nums):
+            a = target - nums[m]
+            newnums = nums
+            del newnums[m]
+            if a in newnums:
+                global b
+                b=[m,nums.index(a)]
+                break 
+            else:
+                m += 1      
+        return b
+结果老是【0,0】   
+
+正解：
+class Solution:
+    def twoSum(self, nums, target):            
+        m=0
+        while m<len(nums):
+            a = target - nums[m]
+            if a in nums and nums.index(a) != m :
+            ##通过多重条件省去建立另一个数组的需要
+                global b
+                b=[m,nums.index(a)]
+                break
+            else:
+                m += 1
+        return b
