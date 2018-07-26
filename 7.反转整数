@@ -1,0 +1,34 @@
+# leetcode-train
+python：
+class Solution:
+    def reverse(self, x):
+        m = str(abs(x)) #字符化
+        n=''
+        i=len(m)-1
+        while i >=0:
+            n=n+m[i]  #从后往前传入值
+            i -=1
+        b=int(n)      #整型化
+        if x<0:       #检验正负
+            b=-b
+        if abs(b)>2**31:  #检验是否溢出
+            b=0
+        return b  
+
+
+c++:
+//通过pop弹出最后一位并用rev接受
+class Solution {
+public:
+    int reverse(int x) {
+        int rev = 0;
+        while (x != 0) {
+            int pop = x % 10;//取余最后一位
+            x /= 10;         
+            if (rev > INT_MAX/10 || (rev == INT_MAX / 10 && pop > 7)) return 0;//超过上限
+            if (rev < INT_MIN/10 || (rev == INT_MIN / 10 && pop < -8)) return 0;//超过下限
+            rev = rev * 10 + pop;
+        }
+        return rev;
+    }
+};
