@@ -1,0 +1,19 @@
+# leetcode-train
+#自己思路
+class Solution:
+    def isPalindrome(self, x):
+        rev=0
+        while x>=1:
+            pop=x%10   ###取余
+            x /=10       
+            x=int(x)
+            temp=rev*10+pop
+            rev=temp
+        if x!=rev:
+            return False
+        else:
+            return True
+   ##结果老是false
+   
+   
+   
